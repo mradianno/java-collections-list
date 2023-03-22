@@ -4,15 +4,22 @@ import java.util.*;
 
 
 public class StudentList implements List<Student> {
-    private int size = 0;
+    private int size;
 
     public int getSize() {
         return size;
     }
 
-    private Student[] students = new Student[10];
+    private Student[] students;
+
+
+    public StudentList() {
+        students = new Student[10];
+        size = 0;
+    }
 
     public StudentList(int capacity) {
+        super();
         if (capacity < 0) throw new IllegalArgumentException();
 
         this.students = new Student[capacity];
@@ -89,6 +96,7 @@ public class StudentList implements List<Student> {
 
     @Override
     public void clear() {
+        size = 0;
         this.students = new Student[10];
     }
 
@@ -132,11 +140,12 @@ public class StudentList implements List<Student> {
 
     @Override
     public int indexOf(Object o) {
-        for (int i = 0; i < this.size; i++) {
-            if (this.students[i].equals(o))
-                return i;
+        if (o instanceof Student) {
+            for (int i = 0; i < this.size; i++) {
+                if (this.students[i].equals(o))
+                    return i;
+            }
         }
-
         return -1;
     }
 

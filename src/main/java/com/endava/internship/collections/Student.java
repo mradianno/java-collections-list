@@ -38,11 +38,11 @@ public class Student //TODO consider implementing any interfaces necessary for y
         Student st = (Student) o;
         if (this.name == null) {
             if (st.name != null) return false;
-        } else if (!this.name.equals(st.name) && !this.dateOfBirth.equals(st.dateOfBirth)) {
-            return false;
+        } else if (this.name.equals(st.name) && this.dateOfBirth.equals(st.dateOfBirth)) {
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /*
